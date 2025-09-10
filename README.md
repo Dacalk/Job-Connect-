@@ -69,7 +69,7 @@ JobConnect/
 │   └── config/            # 🔧 Configuration files (e.g., database)
 ├── designs/               # 🎨 Figma design files and prototypes
 ├── docs/                  # 📖 Project documentation
-└── README.md              # 📜 This file
+└── readme.md              # 📜 This file
 
 ⚙️ Installation
 

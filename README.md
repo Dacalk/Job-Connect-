@@ -1,147 +1,260 @@
-🌟 JobConnect 🚀
-JobConnect is a vibrant and modern job posting platform designed to streamline the job search and hiring process for job seekers and employers. Built with a focus on usability, security, and scalability, it offers real-time job search, application tracking, and administrative management features. 🌐💼
-📋 Table of Contents
+# JobConnect
 
-Introduction ✨
-Features 🔥
-Technology Stack 🛠️
-Project Structure 📂
-Installation ⚙️
-Usage 🎯
-Contributing 🤝
-Team Members 👥
-License 📜
+**JobConnect** is a vibrant, modern job posting platform designed to streamline job search and hiring for job seekers and employers. Built with usability, security, and scalability in mind, JobConnect provides real-time job search, application tracking, and admin management. 🌐💼
 
-🌍 Introduction
-JobConnect is a dynamic web-based platform that connects employers with job seekers through an intuitive, secure, and efficient interface. It supports three user roles: Admin, Employer, and Job Seeker, each with tailored functionalities. Say goodbye to traditional job-hunting methods with this centralized, automated, and accessible system! 🚀
-🔥 Features
+---
 
-🔐 User Authentication & Authorization: Secure login with role-based access control.
-📝 Job Posting and Management: Employers can post, update, and remove job listings.
-🖼️ Profile and Resume Handling: Job seekers can create profiles and upload resumes.
-📊 Application Tracking: Real-time tracking for job applications.
-🛡️ Admin Moderation Panel: Admins can moderate content and monitor platform usage.
-🔍 Search and Filter Engine: Keyword-based search with multiple filtering options.
-🔔 Notifications System: Alerts for significant user actions (e.g., job applications).
-📈 Scalable and Maintainable: Modular codebase for easy updates and scalability.
+## Table of Contents
+1. [Introduction](#introduction-✨)  
+2. [Features](#features-🔥)  
+3. [Technology Stack](#technology-stack-🛠️)  
+4. [Project Structure](#project-structure-📂)  
+5. [Getting Started / Installation](#getting-started--installation-⚙️)  
+6. [Environment Variables](#environment-variables)  
+7. [Usage / Running Locally](#usage--running-locally-🎯)  
+8. [API — Quick Overview](#api--quick-overview)  
+9. [Database Models (Overview)](#database-models-overview)  
+10. [Testing](#testing)  
+11. [Deployment Notes](#deployment-notes)  
+12. [Contributing](#contributing-🤝)  
+13. [Code of Conduct](#code-of-conduct)  
+14. [Team Members](#team-members-👥)  
+15. [License](#license-📜)  
 
-🛠️ Technology Stack
+---
 
+# Introduction ✨
+JobConnect is a web platform connecting employers and job seekers through an intuitive, secure, and efficient interface. It supports three primary roles:
 
+- **Admin** — moderates content, manages users, views analytics  
+- **Employer** — posts and manages job listings, reviews applications  
+- **Job Seeker** — creates profile, uploads resumes, searches & applies for jobs
 
-Layer
-Technology
+Say goodbye to scattered job hunting — JobConnect centralizes postings, applications, and communication. 🚀
 
+---
 
+# Features 🔥
+- 🔐 **User Authentication & Role-based Authorization** (Admin / Employer / Job Seeker)  
+- 📝 **Job Posting & Management** (create, update, delete, draft/publish)  
+- 🖼️ **Profile & Resume Uploads** (file handling, CV parsing extension-ready)  
+- 📊 **Application Tracking** (status updates, employer notes)  
+- 🛡️ **Admin Moderation Panel** (approve/remove content, user management)  
+- 🔍 **Search & Filters** (keyword, location, job type, salary range, tags)  
+- 🔔 **Notifications** (email / in-app alerts for key events)  
+- 📈 **Scalable, Modular Codebase** — easier to maintain & extend  
 
-Frontend 🌈
-React.js, HTML5, CSS3, Tailwind CSS / Bootstrap
+---
 
+# Technology Stack 🛠️
+- **Frontend:** React.js, HTML5, CSS3, Tailwind CSS / Bootstrap  
+- **Backend:** Node.js + Express.js  
+- **Database:** MongoDB (NoSQL) *or* PostgreSQL (Relational)  
+- **Design:** Figma (design assets in `designs/`)  
+- **Version Control:** Git + GitHub
 
-Backend ⚡️
-Node.js with Express.js
+---
 
+# Project Structure 📂
+```
 
-Database 💾
-MongoDB (NoSQL) or PostgreSQL (Relational)
-
-
-Design Tool 🎨
-Figma
-
-
-Version Control 📌
-Git + GitHub
-
-
-📂 Project Structure
 JobConnect/
-├── client/                # 🌟 React.js frontend
-│   ├── src/
-│   │   ├── components/    # 🧩 Reusable React components
-│   │   ├── pages/         # 📄 Page components (e.g., Login, JobSearch)
-│   │   ├── assets/        # 🖼️ Static assets (images, CSS, etc.)
-│   │   └── App.js         # 🚀 Main React app
-├── server/                # ⚙️ Node.js backend
-│   ├── routes/            # 🛤️ API routes
-│   ├── models/            # 📚 Database schemas (MongoDB/PostgreSQL)
-│   ├── controllers/       # 🎮 Business logic for API endpoints
-│   └── config/            # 🔧 Configuration files (e.g., database)
-├── designs/               # 🎨 Figma design files and prototypes
-├── docs/                  # 📖 Project documentation
-└── readme.md              # 📜 This file
+├── client/                # React frontend
+│   ├── public/
+│   └── src/
+│       ├── components/    # Reusable UI components
+│       ├── pages/         # Page components (Login, JobSearch, Dashboard)
+│       ├── hooks/         # Custom hooks
+│       └── App.js
+├── server/                # Node.js / Express backend
+│   ├── routes/            # API routes (auth, jobs, users, admin)
+│   ├── controllers/       # Business logic
+│   ├── models/            # DB schemas / ORM models
+│   ├── middlewares/       # auth, validation, error handlers
+│   └── config/            # DB + env configs
+├── designs/               # Figma design files
+├── docs/                  # Project documentation
+└── README.md              # This file
 
-⚙️ Installation
+````
 
-Clone the repository 📥:
+---
+
+# Getting Started / Installation ⚙️
+
+## Clone the repo
+```bash
 git clone https://github.com/Dacalk/Job-Connect-.git
 cd Job-Connect-
+````
 
+> Ensure you have Node.js (v16+ recommended), npm/yarn, and your DB (MongoDB or PostgreSQL).
 
-Install dependencies 📦:
+### Backend setup
 
-For the backend:cd server
+```bash
+cd server
 npm install
+```
 
+### Frontend setup
 
-For the frontend:cd client
+```bash
+cd client
 npm install
+```
 
+---
 
+# Environment Variables
 
+Create a `.env` file in `server/`:
 
-Set up environment variables 🔑:
+```
+PORT=5000
+DATABASE_URL=mongodb://localhost:27017/jobconnect    # or PostgreSQL URL
+JWT_SECRET=your_jwt_secret_here
+JWT_EXPIRES_IN=7d
+NODE_ENV=development
+SMTP_HOST=smtp.example.com        # optional - for email notifications
+SMTP_PORT=587
+SMTP_USER=you@example.com
+SMTP_PASS=supersecret
+CLIENT_URL=http://localhost:3000  # used for CORS or email links
+```
 
-Create a .env file in the server/ directory with:PORT=5000
-DATABASE_URL=your_database_url
-JWT_SECRET=your_jwt_secret
+---
 
+# Usage / Running Locally 🎯
 
+### Backend
 
+```bash
+cd server
+npm run dev   # or npm start
+```
 
-Run the application 🚀:
+### Frontend
 
-Start the backend:cd server
+```bash
+cd client
 npm start
+```
 
+* Frontend: `http://localhost:3000`
+* Backend API: `http://localhost:5000`
 
-Start the frontend:cd client
-npm start
+---
 
+# API — Quick Overview
 
+Example endpoints:
 
+### Auth
 
-Access the app 🌐:
+* `POST /api/auth/register`
+* `POST /api/auth/login`
+* `GET /api/auth/me`
 
-Frontend: http://localhost:3000
-Backend API: http://localhost:5000
+### Jobs
 
+* `POST /api/jobs` (employer only)
+* `GET /api/jobs` (search & filter)
+* `GET /api/jobs/:id`
+* `PUT /api/jobs/:id`
+* `DELETE /api/jobs/:id`
 
+### Applications
 
-🎯 Usage
+* `POST /api/jobs/:id/apply` (job seeker)
+* `GET /api/jobs/:id/applications` (employer only)
+* `PUT /api/applications/:id/status`
 
-Job Seekers 👩‍💼: Register, create a profile, upload a resume, and search/apply for jobs.
-Employers 🏢: Register, post job listings, manage applications, and update company profiles.
-Admins 🛡️: Log in to moderate content, approve job postings, and view usage analytics.
+### Admin
 
-🤝 Contributing
-We love contributions! 🎉 To contribute:
+* `GET /api/admin/users`
+* `GET /api/admin/jobs/pending`
+* `PUT /api/admin/jobs/:id/approve`
+* `DELETE /api/admin/jobs/:id`
 
-Fork the repository 🍴.
-Create a new branch (git checkout -b feature/your-feature) 🌿.
-Commit your changes (git commit -m 'Add your feature') ✅.
-Push to the branch (git push origin feature/your-feature) 🚀.
-Open a Pull Request 📬.
+---
 
-Please ensure your code follows the project's coding standards and includes relevant tests.
-👥 Team Members
+# Database Models (Overview)
 
-DMCDB Dissanayaka (32820) 🌟
-HMSSK Herath (32294) 🚀
-KMGS Wijayawardhana (31897) 🎨
-JJR Oshani (33112) 💻
-S Suthesna (34152) 🔍
-WMCK Weerasekara (32790) 🛠️
+### User
 
-📜 License
-This project is licensed under the MIT License. See the LICENSE file for details. 🗳️
+* `id`, `name`, `email`, `passwordHash`, `role`, `profile`, `resumeUrl`, timestamps
+
+### Job
+
+* `id`, `title`, `company`, `description`, `location`, `employmentType`, `salaryRange`, `tags`, `status`, timestamps
+
+### Application
+
+* `id`, `jobId`, `applicantId`, `coverLetter`, `resumeUrl`, `status`, timestamps
+
+---
+
+# Testing
+
+```bash
+cd server
+npm run test
+```
+
+(Add Jest/Mocha + Supertest as preferred.)
+
+---
+
+# Deployment Notes
+
+* Use Docker or deploy separately (frontend → Vercel/Netlify, backend → Render/Heroku/DigitalOcean).
+* Store resumes in cloud storage (S3, DigitalOcean Spaces).
+* Configure HTTPS, rate limiting, and strong secrets for production.
+
+---
+
+# Contributing 🤝
+
+1. Fork the repo 🍴
+2. Create a branch: `git checkout -b feature/your-feature` 🌿
+3. Commit: `git commit -m "Add feature"` ✅
+4. Push: `git push origin feature/your-feature` 🚀
+5. Open PR 📬
+
+Please follow coding style, write tests, and avoid committing secrets.
+
+---
+
+# Code of Conduct
+
+Contributors are expected to maintain a respectful, inclusive, and professional environment.
+
+---
+
+# Team Members 👥
+
+* DMCDB Dissanayaka (32820) 🌟
+* HMSSK Herath (32294) 🚀
+* KMGS Wijayawardhana (31897) 🎨
+* JJR Oshani (33112) 💻
+* S Suthesna (34152) 🔍
+* WMCK Weerasekara (32790) 🛠️
+
+---
+
+# License 📜
+
+This project is licensed under the **MIT License**.
+
+```
+MIT License
+
+Copyright (c) 2025 JobConnect
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:

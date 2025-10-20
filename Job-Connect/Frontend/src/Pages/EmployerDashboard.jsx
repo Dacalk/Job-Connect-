@@ -529,4 +529,38 @@ const EmployerDashboard = ({ user, onLogout, onDashboardClick, currentPage, setC
     }
   };
 
+  const filteredJobs = jobs.filter((job) => {
+    let matchesFilter = true;
+    if (jobFilter !== "all") {
+      const status = job.isActive ? "active" : "closed";
+      matchesFilter = status === jobFilter.toLowerCase();
+    }
+    if (jobSearch.trim()) {
+      const searchTerm = jobSearch.toLowerCase();
+      matchesFilter = matchesFilter && job.title.toLowerCase().includes(searchTerm);
+    }
+    return matchesFilter;
+  });
+
+  const filteredApplications = applications.filter((app) => {
+    let matchesFilter = true;
+    if (applicationFilter !== "all") {
+      matchesFilter = app.status.toLowerCase() === applicationFilter.toLowerCase();
+    }
+    if (filteredJobId) {
+      const jobId = app.jobId._id || app.jobId.id || app.jobId;
+      matchesFilter = matchesFilter && jobId === filteredJobId;
+    }
+    if (applicationSearch.trim()) {
+      const searchTerm = applicationSearch.toLowerCase();
+      const candidateName = app.applicantId?.username || app.candidateName || '';
+      const jobTitle = app.jobId?.title || app.jobTitle || '';
+      matchesFilter =
+        matchesFilter &&
+        (candidateName.toLowerCase().includes(searchTerm) || jobTitle.toLowerCase().includes(searchTerm));
+    }
+    return matchesFilter;
+  });
+
   
+
